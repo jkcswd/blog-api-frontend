@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const PostsDisplay = () => {
   const [posts, setPosts] = useState([])
@@ -15,14 +16,16 @@ const PostsDisplay = () => {
   }
   
   return (
-    <section className='post-display'>
+    <section className="post-display">
       {posts.map(post => {
         if(post.isPublished) {
           return(
-            <div className='blog-post'>
-              <h1>{post.title}</h1>
-              <p>{'By ' + post.user.firstName + ' ' + post.user.lastName}</p>
-            </div>
+            <Link to={'/' + post._id}>
+              <div className="blog-post">
+                <h1>{post.title}</h1>
+                <p>{'By ' + post.user.firstName + ' ' + post.user.lastName}</p>
+              </div>
+            </Link>
           )
         }
 
