@@ -1,18 +1,16 @@
-import './App.css';
-import Header from './components/Header';
-import Information from './components/Information';
-import PostsDisplay from './components/PostsDisplay';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import MainPage from './components/MainPage';
+import PostDetail from './components/PostDetail';
 
 const App = () => {
 
   return (
-    <div className="App">
-      <Header/>
-      <Information/>
-      <PostsDisplay/>
-      <Footer/>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<MainPage/>}/>
+      <Route path="/:id" element= {<PostDetail/>}/>
+    </Routes>
+  </BrowserRouter>
   );
 }
 
