@@ -1,23 +1,17 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import Header from './components/Header';
+import Information from './components/Information';
+import PostsDisplay from './components/PostsDisplay';
+import Footer from './components/Footer';
 
-function App() {
-  const [posts, setPosts] = useState([])
+const App = () => {
 
-  useEffect(() =>{
-    fetchProducts();
-  },[]);
-
-  const fetchProducts = async () => {
-    const response = await fetch('http://localhost:3000/api/post', {mode:'cors'});
-    const posts = await response.json();
-
-    setPosts(posts);
-  }
-  
   return (
     <div className="App">
-
+      <Header/>
+      <Information/>
+      <PostsDisplay/>
+      <Footer/>
     </div>
   );
 }
