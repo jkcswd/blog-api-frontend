@@ -4,10 +4,10 @@ const PostsDisplay = () => {
   const [posts, setPosts] = useState([])
 
   useEffect(() =>{
-    fetchProducts();
+    fetchPosts();
   },[]);
 
-  const fetchProducts = async () => {
+  const fetchPosts = async () => {
     const response = await fetch('http://localhost:3000/api/post', {mode:'cors'});
     const posts = await response.json();
 
@@ -17,12 +17,16 @@ const PostsDisplay = () => {
   return (
     <section className='post-display'>
       {posts.map(post => {
-        return(
-          <div className='blog-post'>
-            <h1>{post.title}</h1>
-            <p>{post.text}</p>
-          </div>
-        )
+        if(post.isPublished) {
+          return(
+            <div className='blog-post'>
+              <h1>{post.title}</h1>
+              <p>{'By ' + post.user.firstName + ' ' + post.user.lastName}</p>
+            </div>
+          )
+        }
+
+        return null;
       })}
   </section>
   )
