@@ -76,6 +76,7 @@ const PostDetail = () => {
           <div key={comment._id}>
             <p>{comment.comment}</p>
             <p>{comment.user.username}</p>
+            <p>{comment.datePublished}</p>
           </div>
         )
       })}
