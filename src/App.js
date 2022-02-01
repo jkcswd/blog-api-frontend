@@ -6,11 +6,11 @@ const App = () => {
 
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<MainPage/>}/>
-      <Route path="/:id" element= {<PostDetail/>}/>
-    </Routes>
-  </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage/>}/>
+        <Route path="/:id" element= {<PostDetail/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
