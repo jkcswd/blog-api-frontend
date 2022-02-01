@@ -23,7 +23,7 @@ const PostDetail = () => {
             {
               comment: commentToSend,
               post: location.pathname.substring(1), // Remove '/' from pathname to return post id only
-              user:'61f70a6a6efc017bbd591282'
+              user: JSON.parse(localStorage.userDetails)._id || '61f70a6a6efc017bbd591282' // String is id of anon user
             }
           )
         });
