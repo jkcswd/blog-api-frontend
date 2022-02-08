@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import '../styles/PostsDisplay.css'
 
 const PostsDisplay = () => {
   const [posts, setPosts] = useState([])
@@ -16,19 +17,18 @@ const PostsDisplay = () => {
   }
   
   return (
-    <section className="post-display">
+    <section className="PostsDisplay">
       {posts.map(post => {
         if(post.isPublished) {
           return(
-            <Link key={post._id} to={'/' + post._id}>
-              <div className="blog-post">
+            <div className="blog-post" key={post._id}>
+              <Link to={'/' + post._id}>
                 <h1>{post.title}</h1>
                 <p>{'By ' + post.user.firstName + ' ' + post.user.lastName}</p>
-              </div>
-            </Link>
+              </Link>
+            </div>
           )
         }
-
         return null;
       })}
   </section>
