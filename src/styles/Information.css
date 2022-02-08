@@ -1,0 +1,7 @@
+.Information {
+  align-items: center;
+  display: flex;
+  font-size: 2rem;
+  height: 5rem;
+  justify-content: center;
+}

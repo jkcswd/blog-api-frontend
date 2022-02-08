@@ -1,0 +1,10 @@
+.Header {
+  align-items: center;
+  background-color: var(--black);
+  color: var(--white);
+  display: flex;
+  font-size: 5rem;
+  font-weight: 200;
+  height: 10rem;
+  padding: 1rem;
+}
