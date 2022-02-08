@@ -1,5 +1,8 @@
 import { useEffect,useState } from "react";
 import { useLocation } from "react-router-dom";
+import Footer from "./Footer";
+import Header from "./Header";
+import '../styles/PostDetail.css'
 
 const PostDetail = () => {
   const location = useLocation();
@@ -10,7 +13,6 @@ const PostDetail = () => {
   const [commentArray, setCommentArray] = useState([]);
 
   useEffect(() =>{
-    
     const sendCommentToApi = async () => {
       if(commentToSend) {
         await fetch('http://localhost:8000/api/comment/', {
@@ -51,9 +53,7 @@ const PostDetail = () => {
   }, [commentToSend, location.pathname]);
 
   const updateCommentToSend = (e) => {
-    e.preventDefault(); //prevent page refresh on click
-
-    setCommentToSend(e.target.elements[0].value)
+    setCommentToSend(comment);
   }
 
   const handleComment = (e) => {
@@ -64,22 +64,27 @@ const PostDetail = () => {
 
   return (
     <div className="PostDetail">
-      <h1>{post.title}</h1>
-      <p>{post.text}</p>
-      <h2>Comments</h2>
-      <form onSubmit={updateCommentToSend}>
-        <input type="text" value={comment} onChange={handleComment}/>
-        <input type="submit" />
-      </form>
-      {commentArray.map(comment => {
-        return(
-          <div key={comment._id}>
-            <p>{comment.comment}</p>
-            <p>{comment.user.username}</p>
-            <p>{comment.datePublished}</p>
-          </div>
-        )
-      })}
+      <Header/>
+      <section className="content">
+        <h1>{post.title}</h1>
+        <p>{post.text}</p>
+        <div className="comments">
+          <h2>Comments</h2>
+          <form onSubmit={updateCommentToSend}>
+            <textarea value={comment} onChange={handleComment}/>
+            <input className="button" type="submit" value="Submit Comment"/>
+          </form>
+          {commentArray.map(comment => {
+            return(
+              <div className="comment" key={comment._id}>
+                <p>{comment.comment}</p>
+                <p className="user">{comment.user.username} ({comment.datePublished})</p>
+              </div>
+            )
+          })}
+        </div>
+      </section>
+      <Footer/>
     </div>
   )
 }
