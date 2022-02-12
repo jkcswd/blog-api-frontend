@@ -15,7 +15,7 @@ const PostDetail = () => {
   useEffect(() =>{
     const sendCommentToApi = async () => {
       if(commentToSend) {
-        await fetch('http://localhost:8000/api/comment/', {
+        await fetch('https://powerful-depths-39238.herokuapp.com/api/comment/', {
           method: 'POST',
           mode: 'cors',
           headers: {
@@ -36,7 +36,7 @@ const PostDetail = () => {
     sendCommentToApi();
 
     const fetchPost = async () => {
-      const response = await fetch(`http://localhost:8000/api/post/${location.pathname}`, {mode:'cors'});
+      const response = await fetch(`https://powerful-depths-39238.herokuapp.com/api/post/${location.pathname}`, {mode:'cors'});
       const post = await response.json();
   
       setPost(post);
@@ -44,7 +44,7 @@ const PostDetail = () => {
     fetchPost();
 
     const fetchComments = async () => {
-      const response = await fetch(`http://localhost:8000/api/post/${location.pathname}/comments`, {mode:'cors'});
+      const response = await fetch(`https://powerful-depths-39238.herokuapp.com/api/post/${location.pathname}/comments`, {mode:'cors'});
       const comments = await response.json();
   
       setCommentArray(comments);

@@ -10,7 +10,7 @@ const PostsDisplay = () => {
   },[]);
 
   const fetchPosts = async () => {
-    const response = await fetch('http://localhost:8000/api/post', {mode:'cors'});
+    const response = await fetch('https://powerful-depths-39238.herokuapp.com/api/post', {mode:'cors'});
     const posts = await response.json();
 
     setPosts(posts);
